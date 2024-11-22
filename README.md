@@ -113,7 +113,7 @@ These scripts automates the following steps:
 ## Future Work
 
 1. Support for Additional File Types:
-Extend the framework to handle additional file formats, such as XML or YAML, by implementing new handlers and factories.
+Extend the framework to handle additional file formats, such as XML, YAML or a custom internal file, by implementing new handlers and factories.
 
 2. Enhanced Data Processing Capabilities:
 Introduce more advanced data processing algorithms and customizable transformations to meet diverse application needs.
