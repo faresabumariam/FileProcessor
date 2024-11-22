@@ -1,0 +1,37 @@
+# Build files
+/build/
+
+# Compiled object files
+*.o
+*.obj
+*.lo
+*.hi
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled static libraries
+*.lib
+*.a
+
+# Debug files
+*.log
+*.gcda
+*.gcno
+*.gcov
+coverage.info
+/coverage_report/
+
+# IDE-specific files
+.vscode/
+*.code-workspace
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
