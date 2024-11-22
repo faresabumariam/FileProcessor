@@ -4,6 +4,8 @@ This project is a C++ application designed to process and analyze CSV and JSON f
 
 This project offers easy extensibility to add support for processing more file types in the future.
 
+It can be compliled on both Linux and Windows. The instructions below are for Linux.
+
 ---
 
 ## Features
