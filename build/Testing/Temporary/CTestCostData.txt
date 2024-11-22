@@ -1,4 +1,0 @@
-CSVHandlerTests 1 0.00471916
-JSONHandlerTests 1 0.00621878
-FileHandlerFactoryTests 1 0.00360672
----
