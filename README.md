@@ -35,8 +35,8 @@ This project offers easy extensibility to add support for processing more file t
 #### Steps:
 1. Clone the repository (if applicable):
     ```bash
-    git clone <repository-url>
-    cd NeuroClues
+    git clone https://github.com/faresabumariam/FileProcessor.git
+    cd FileProcessor
     ```
 
 2. Create a build directory:
