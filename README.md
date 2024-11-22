@@ -108,4 +108,18 @@ These scripts automates the following steps:
    ./run_tests.sh
     ```
 
+---
 
+## Future Work
+
+1. Support for Additional File Types
+Extend the framework to handle additional file formats, such as XML or YAML, by implementing new handlers and factories.
+
+2. Enhanced Data Processing Capabilities
+Introduce more advanced data processing algorithms and customizable transformations to meet diverse application needs.
+
+3. Multithreading for Parallel File Processing
+Implement multithreading to efficiently process multiple files simultaneously, improving performance for large datasets or batch processing.
+
+4. Improved User Interaction
+Develop a user-friendly interface or CLI to enable easier configuration and usage of the file processor.
