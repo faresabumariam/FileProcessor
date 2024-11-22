@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "metrics": {
+            "blinkRate": 20,
+            "blink_rate_intensity": 64.0,
+            "pupilSize": 3.2,
+            "retinaAngleDegrees": 45
+        },
+        "processed": true,
+        "processed_timestamp": "2024-11-22T10:50:50Z",
+        "retina_focus_intensity": 1.44,
+        "session": {
+            "duration": 60,
+            "type": "focus"
+        }
+    },
+    {
+        "id": 2,
+        "metrics": {
+            "blinkRAate": 25,
+            "pupilSize": 2.9,
+            "retinaAngleDegrees": 30
+        },
+        "processed": true,
+        "processed_timestamp": "2024-11-22T10:50:50Z",
+        "retina_focus_intensity": 0.87,
+        "session": {
+            "duration": 45,
+            "type": "calibration"
+        }
+    }
+]
