@@ -1,4 +1,5 @@
 #include "CSVHandler.h"
+#include <algorithm>
 
 const std::vector<std::string>& CSVHandler::getData() const {
     return data;
@@ -21,14 +22,10 @@ void CSVHandler::readFile(const std::string& filename) {
     std::cout << "Header: " << data.front() << std::endl;
 }
 
-
 void CSVHandler::processData() {
     if (data.empty()) return;
 
-    // Define new columns to be added dynamically
-    std::vector<std::string> newColumns = {"processed", "processed_timestamp", "retina_focus_intensity"};
-
-    // Split the header row and append new columns
+    // Split the header row
     std::stringstream headerStream(data[0]);
     std::string cell;
     std::vector<std::string> header;
@@ -37,12 +34,17 @@ void CSVHandler::processData() {
         header.push_back(cell);
     }
 
-    // Append new column headers
-    for (const auto& col : newColumns) {
-        header.push_back(col);
-    }
+    // Check if new columns already exist
+    bool hasProcessed = std::find(header.begin(), header.end(), std::string("processed")) != header.end();
+    bool hasTimestamp = std::find(header.begin(), header.end(), std::string("processed_timestamp")) != header.end();
+    bool hasRetinaFocus = std::find(header.begin(), header.end(), std::string("retina_focus_intensity")) != header.end();
 
-    // Recreate the header row
+    // Append new columns if they don't exist
+    if (!hasProcessed) header.push_back("processed");
+    if (!hasTimestamp) header.push_back("processed_timestamp");
+    if (!hasRetinaFocus) header.push_back("retina_focus_intensity");
+
+    // Reconstruct the header row
     std::ostringstream headerOutput;
     for (size_t i = 0; i < header.size(); ++i) {
         headerOutput << header[i];
@@ -67,6 +69,11 @@ void CSVHandler::processData() {
             row.push_back(cell);
         }
 
+        // Ensure the row has enough columns to accommodate new fields
+        if (row.size() < header.size()) {
+            row.resize(header.size(), ""); // Fill missing cells with empty strings
+        }
+
         // Extract necessary values
         double retinaAngle = std::stod(row[2]);  // Assuming 3rd column is retinaAngleDegrees
         double pupilSize = std::stod(row[3]);   // Assuming 4th column is pupilSize
@@ -74,12 +81,12 @@ void CSVHandler::processData() {
         // Calculate retina focus intensity
         double retinaFocusIntensity = pupilSize * retinaAngle / 100.0;
 
-        // Append new calculated values to the row
-        row.push_back("true");                     // Processed flag
-        row.push_back(ss.str());                   // Processed timestamp
-        row.push_back(std::to_string(retinaFocusIntensity));  // Retina focus intensity
+        // Populate new fields
+        row[header.size() - 3] = "true";                         // Processed flag
+        row[header.size() - 2] = ss.str();                       // Processed timestamp
+        row[header.size() - 1] = std::to_string(retinaFocusIntensity); // Retina focus intensity
 
-        // Recreate the row as a string
+        // Reconstruct the row as a string
         std::ostringstream rowOutput;
         for (size_t j = 0; j < row.size(); ++j) {
             rowOutput << row[j];
@@ -88,6 +95,7 @@ void CSVHandler::processData() {
         data[i] = rowOutput.str();
     }
 }
+
 
 
 void CSVHandler::writeFile(const std::string& filename) {
